@@ -1,1 +1,2 @@
-Main-Class: com.hendrik.CNCServer.CNCServer
+Manifest-Version: 1.0
+Main-Class: CNCServer
