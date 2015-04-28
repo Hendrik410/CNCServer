@@ -1,2 +1,2 @@
 Manifest-Version: 1.0
-Main-Class: com.hendrik.CNCServer.CNCServer
+Main-Class: build.com.hendrik.CNCServer.CNCServer
