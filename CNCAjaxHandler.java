@@ -52,6 +52,9 @@ public class CNCAjaxHandler implements HttpHandler {
                 cncController.setContinuousMovement(true);
             }
         }
+        if(headers.containsKey("StepCount")){
+            cncController.setMovementSpeed(Integer.parseInt(headers.getFirst("StepCount")));
+        }
 
     }
 }

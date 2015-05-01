@@ -6,9 +6,16 @@ package com.hendrik.CNCServer;
 public class CNCController {
 
     private CNCStats cncStats;
+    public CNCSerial cncSerial;
 
-    public CNCController(){
+    public CNCController() throws Exception{
         cncStats = new CNCStats();
+
+        cncSerial = new CNCSerial();
+    }
+
+    public void closeAll(){
+        cncSerial.close();
     }
 
     public void move(CNCDirection direction){
@@ -29,6 +36,10 @@ public class CNCController {
     public void setContinuousMovement(boolean continuousMovement){
         cncStats.continuousMovement = continuousMovement;
         System.out.println("Set continuousMovement to " + continuousMovement);
+    }
+
+    public void setMovementSpeed(int speed){
+        cncStats.movementSpeed = speed;
     }
 
     public CNCStats getCNCStats(){
