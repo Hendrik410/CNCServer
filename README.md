@@ -13,3 +13,11 @@ commit #1
     type quit to end properly,
     type send [cmd] and [cmd] will be send over serial,
     type help to view help
+
+
+
+commit #2
+
+  -Added package for Gcode instructions
+  -Added possibility to send GCodeInstructions
+  -Now possible to control spindle/laser via ajax
