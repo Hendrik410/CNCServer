@@ -1,0 +1,1 @@
+java -Djava.library.path=/usr/lib/jni -cp ./CNCServer.jar:/usr/share/java/RXTXcomm.jar com.hendrik.CNCServer.CNCServer
