@@ -14,7 +14,7 @@ public class InputListener extends Thread {
         Scanner scanner = new Scanner(System.in);
 
         String cmd;
-        for(;;){
+        while (true) {
             cmd = scanner.nextLine();
             switch(cmd.substring(0,4)){
                 case "quit":
@@ -38,7 +38,7 @@ public class InputListener extends Thread {
     }
     public void sendGCode(String cmd){
         System.out.println("Sending: " + cmd.substring(5));
-        parent.cncController.cncSerial.sendGCode(cmd.substring(5));
+        parent.cncController.cncSerial.sendString(cmd.substring(5));
     }
     public void printHelp(){
         System.out.println("help:    show this message");

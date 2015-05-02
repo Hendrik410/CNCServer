@@ -1,9 +1,12 @@
 package com.hendrik.CNCServer;
 
-import com.sun.org.apache.xerces.internal.impl.xs.SchemaGrammar;
+import com.hendrik.CNCServer.GCodes.GCodeInstruction;
 import gnu.io.*;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.nio.CharBuffer;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -39,17 +42,21 @@ public class CNCSerial implements SerialPortEventListener{
     }
 
 
-    public void sendString(String data) throws IOException {
+    public void sendRawString(String data) throws IOException {
         serialWriter.write(data.getBytes());
     }
 
-    public void sendGCode(String gcode){
+    public void sendString(String gcode){
         try {
-            sendString(gcode + "\n");
+            sendRawString(gcode + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
         lastMessage = new Message();
+    }
+
+    public void sendGCode(GCodeInstruction gcode){
+        sendString(gcode.getGCode());
     }
 
     @Override

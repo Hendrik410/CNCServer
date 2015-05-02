@@ -6,4 +6,6 @@ package com.hendrik.CNCServer;
 public class CNCServerRessources {
     public static final String PATH_HTML = "./html";
     public static final String PATH_404 = PATH_HTML + "/404.html";
+
+    public static final boolean hasVariableSpindle = false;
 }

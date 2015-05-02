@@ -1,5 +1,8 @@
 package com.hendrik.CNCServer;
 
+import com.hendrik.CNCServer.GCodes.SpindleOff;
+import com.hendrik.CNCServer.GCodes.SpindleOnClockwise;
+
 /*
  * Created by hendrik on 23.04.15.
  */
@@ -22,13 +25,19 @@ public class CNCController {
         System.out.println("Move " + direction.name());
     }
 
-    public void setDrill(byte val){
+    public void setDrill(int val){
         if(val == 0){
             cncStats.drill = false;
+            cncSerial.sendGCode(new SpindleOff());
             System.out.println("Set drill off");
         } else if(val > 0) {
             cncStats.drill = true;
             cncStats.drillSpeed = val;
+            if(CNCServerRessources.hasVariableSpindle)
+                cncSerial.sendGCode(new SpindleOnClockwise(val));
+            else
+                cncSerial.sendGCode(new SpindleOnClockwise());
+
             System.out.println("Set drill to " + val);
         }
     }
