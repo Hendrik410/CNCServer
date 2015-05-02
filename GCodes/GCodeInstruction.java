@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 public abstract class GCodeInstruction {
     protected String command;
     private char[] requiredParams;
-    private Map<Character, String> params;
+    protected Map<Character, String> params;
     private String description;
 
     public GCodeInstruction(String command, char[] requiredParams){
@@ -35,6 +35,7 @@ public abstract class GCodeInstruction {
         }
         return true;
     }
+
 
     public String getGCode(){
         if(!checkForRequiredParams()) return "";
